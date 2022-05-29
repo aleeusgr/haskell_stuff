@@ -23,5 +23,13 @@ myLength [] = 0
 myLength (_:xs) = 1 + myLength xs
 
 --5. reverse a list
--- myReverse 
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse x = last x : myReverse (init x)
+
+--6. palindrome
+p = [1,3,1]
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome x = x == myReverse x
+
 --main x = x
