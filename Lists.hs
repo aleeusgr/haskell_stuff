@@ -35,4 +35,12 @@ isPalindrome x = x == myReverse x
 --7. flatten
 data NestedList a = Elem a | List [NestedList a]
 
+--14. Duplicate elements of a list
+dupl :: [a] -> [a]
+dupl [] = []
+dupl (x:xs) = x : x : dupl xs
+
+--15. Replicate elements of a list a given number of times
+--repli :: Int -> [a] -> [a]
+
 --main x = x
