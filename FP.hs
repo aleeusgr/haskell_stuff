@@ -70,3 +70,30 @@ perfects n = [x | x <- [1..n], x ==sum ( init $ factors x)]
 ys = [1..9]
 dotProduct :: Num a => [a] -> [a] -> a
 dotProduct xs ys = sum [x*y | (x,y) <- zip xs ys]
+
+--8. Recursion @33:30
+--and
+myAnd :: [Bool] -> Bool
+myAnd [] = True
+myAnd (x:xs) = x && myAnd xs
+
+--concat
+myConcat :: [[a]] -> [a]
+myConcat [] = []
+--myConcat (x:xs) = x ++ myConcat xs
+myConcat x = foldr (++) [] x
+--replicate: produce a list with n identical elements
+myReplicate :: Int -> a -> [a]
+myReplicate 1 a = [a]
+myReplicate n a = a : myReplicate (n-1) a 
+--(!!)
+sel :: [a] -> Int -> a
+sel x 0 = head x
+sel x n = sel (tail x) (n-1)
+--elem: is the value in the list?
+myElem :: Eq a => a -> [a] -> Bool
+myElem v [] = False
+myElem v (x:xs) = (x == v) || myElem v xs 
+--merge: two sorted lists and sorts them
+--mergesort
+--
