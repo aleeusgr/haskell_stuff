@@ -8,6 +8,12 @@ module Exercises where
 import Prelude hiding (init, last)
 xs = [2..10]
 
+qsort :: Ord a => [a] -> [a]
+qsort []     = []
+qsort (x:xs) = qsort ys ++ [x] ++ qsort zs
+               where 
+                    ys = [a | a <- xs, a <= x]
+                    zs = [b | b <- xs, b > x ]
 --1. Find errors
 n = a `div` length xs
   where
@@ -80,20 +86,41 @@ myAnd (x:xs) = x && myAnd xs
 --concat
 myConcat :: [[a]] -> [a]
 myConcat [] = []
+
 --myConcat (x:xs) = x ++ myConcat xs
 myConcat x = foldr (++) [] x
+
 --replicate: produce a list with n identical elements
 myReplicate :: Int -> a -> [a]
 myReplicate 1 a = [a]
 myReplicate n a = a : myReplicate (n-1) a 
+
 --(!!)
 sel :: [a] -> Int -> a
-sel x 0 = head x
-sel x n = sel (tail x) (n-1)
+sel (x:_) 0 = x
+sel (_:xs) n = sel xs (n-1)
+
 --elem: is the value in the list?
 myElem :: Eq a => a -> [a] -> Bool
 myElem v [] = False
 myElem v (x:xs) = (x == v) || myElem v xs 
+
 --merge: two sorted lists and sorts them
+myMerge :: Ord a => [a] -> [a] -> [a]
+myMerge [] y = y
+myMerge x [] = x
+--myMerge (x:xs) (y:ys) = if x<y then [x,y] ++ myMerge xs ys else [y,x] ++ myMerge xs ys
+myMerge (x:xs) (y:ys) = if x<y then x : myMerge xs (y:ys) else y : myMerge (x:xs) ys
+
+--insert
+insert :: Ord a => a -> [a] -> [a]
+insert a [] = [a]
+insert a (x:xs) = if a <= x then a:x:xs else x : insert a xs
+
+--isort
+isort :: Ord a => [a] -> [a]
+isort [] = [] 
+isort (x:xs) = insert x (isort xs)
 --mergesort
+
 --
