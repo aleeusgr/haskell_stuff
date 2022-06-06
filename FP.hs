@@ -122,5 +122,16 @@ isort :: Ord a => [a] -> [a]
 isort [] = [] 
 isort (x:xs) = insert x (isort xs)
 --mergesort
+mSort :: Ord a => [a] -> [a]
+mSort [] = []
+mSort [x] = [x]
+mSort xs = myMerge (mSort ys) (mSort zs)
+  where ys = take half xs
+        zs = drop half xs
+        half = length xs `div` 2
+-- Lecture 10 
+-- 1.
+-- 2. [f x | x <-xs , p x ] using map and filter
+-- 3. map and filter using foldr
+--myMap :: (a->b) -> [a] -> [b]
 
---
