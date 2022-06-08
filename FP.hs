@@ -135,3 +135,18 @@ mSort xs = myMerge (mSort ys) (mSort zs)
 -- 3. map and filter using foldr
 --myMap :: (a->b) -> [a] -> [b]
 
+-- Lecture 11
+mySum :: Num a => [a] -> a
+mySum = foldr (+) 0
+
+drop' :: Int  -> [a] -> [a]
+drop' _ [] = []
+drop' 0 x = x
+drop' n (_:xs) = drop' (n-1) xs
+-- what happens when n > length x?
+
+init'' :: [a] -> [a] --remove last element from an empty list
+
+init'' (x:xs) | null xs = []
+              | otherwise = x:init'' xs
+--standard lib definition uses pattern matching, not guards.
