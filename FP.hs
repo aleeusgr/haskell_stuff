@@ -150,3 +150,6 @@ init'' :: [a] -> [a] --remove last element from an empty list
 init'' (x:xs) | null xs = []
               | otherwise = x:init'' xs
 --standard lib definition uses pattern matching, not guards.
+--lecture 12
+type Vect a = ((a,a,a),(a,a,a))
+
