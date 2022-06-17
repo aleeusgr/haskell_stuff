@@ -153,3 +153,28 @@ init'' (x:xs) | null xs = []
 --lecture 12
 type Vect a = ((a,a,a),(a,a,a))
 
+data Shape = Circle Float
+            | Rect Float Float
+
+square :: Float -> Shape
+square n = Rect n n 
+
+area :: Shape -> Float
+area (Circle r) = pi * r^2
+area (Rect x y) = x * y
+
+data Nat = Zero | Succ Nat
+
+nat2int :: Nat -> Int
+nat2int Zero = 0
+nat2int (Succ n) = 1 + nat2int n
+
+int2nat :: Int -> Nat
+int2nat 0 = Zero
+int2nat n = Succ (int2nat (n-1))
+
+-- If you understand this, you understand recursive data types in Haskell:
+add Zero n = n
+add (Succ m) n = Succ (add m n) 
+
+-- Arithmetic expressions
