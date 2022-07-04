@@ -26,3 +26,22 @@ data Figure = Figure { name :: String
                      }-- deriving (Show)
 
 c = Figure {name="circle1", kind= Circle 5, location=origin}
+
+-- reverse an integer
+i = 123456
+
+revInt :: Int -> Int
+revInt x = if x `div` 10 == 0 then x
+  else 10*(x `rem` 10) + revInt (x `div` 10)
+
+
+-- Maybe?
+-- http://book.realworldhaskell.org/read/data-structures.html
+al = [(1, "one"), (2, "two"), (3, "three"), (4, "four")]
+myLookup :: Eq a => a -> [(a, b)] -> Maybe b
+myLookup _ [] = Nothing
+myLookup key ((thiskey,thisval):rest) =
+    if key == thiskey
+       then Just thisval
+       else myLookup key rest
+
