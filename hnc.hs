@@ -1,3 +1,4 @@
+-- Week1
 -- Types 
 type Position = (Int, Int)
 origin :: Position
@@ -27,6 +28,7 @@ data Figure = Figure { name :: String
 
 c = Figure {name="circle1", kind= Circle 5, location=origin}
 
+-- Week2
 -- reverse an integer
 i = 123456
 
@@ -44,6 +46,7 @@ myLookup key ((thiskey,thisval):rest) =
        then Just thisval
        else myLookup key rest
 
+-- week3
 -- word numbers
 word = "coffee"
 lns = zip ['a'..'z'] [1..]
