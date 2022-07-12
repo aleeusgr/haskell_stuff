@@ -44,9 +44,14 @@ myLookup key ((thiskey,thisval):rest) =
        then Just thisval
        else myLookup key rest
 
--- shitty numbers
-word = "shit"
+-- word numbers
+word = "coffee"
 lns = zip ['a'..'z'] [1..]
-
-
+-- need to map myLookup so that it returns a list 
+-- f :: [Char] -> [Int] 
+-- f' :: [Int] -> Int
+-- f' x = foldl (+)
+-- need a function that will collapse a multi-digit number to a single-digit number
+-- f'' :: Int -> Int
+-- 15 -> 6; 11 -> 2
 
