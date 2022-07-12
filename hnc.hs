@@ -30,10 +30,9 @@ c = Figure {name="circle1", kind= Circle 5, location=origin}
 -- reverse an integer
 i = 123456
 
-revInt :: Int -> Int
-revInt x = if x `div` 10 == 0 then x
-  else 10*(x `rem` 10) + revInt (x `div` 10)
-
+--revInt :: Int -> Int
+  
+  
 
 -- Maybe?
 -- http://book.realworldhaskell.org/read/data-structures.html
@@ -44,4 +43,10 @@ myLookup key ((thiskey,thisval):rest) =
     if key == thiskey
        then Just thisval
        else myLookup key rest
+
+-- shitty numbers
+word = "shit"
+lns = zip ['a'..'z'] [1..]
+
+
 
