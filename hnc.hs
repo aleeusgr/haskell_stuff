@@ -46,7 +46,7 @@ myLookup key ((thiskey,thisval):rest) =
        then Just thisval
        else myLookup key rest
 
--- week3
+-- week_
 -- word numbers
 word = "coffee"
 lns = zip ['a'..'z'] [1..]
@@ -54,10 +54,15 @@ lns = zip ['a'..'z'] [1..]
 --hm :: [Char] -> [Maybe Int] 
 hm x = myLookup x lns
 result = map hm word
--- f' x = sum
+-- f' x = sum on Maybe
 -- need a function that will collapse a multi-digit number to a single-digit number
 -- f'' :: Int -> Int
--- 15 -> 6; 11 -> 2
+-- 15 -> 6; 111 -> 3; 96870->9+..+0->until get a single digit number
+-- compare: function reverseInt 12345 -> 54321
 
 -- use filter and map.
---result = map myLookup 
+--week 5 
+-- Pure vs IO
+-- filter vs fold
+-- recursion
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
