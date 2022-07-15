@@ -50,11 +50,14 @@ myLookup key ((thiskey,thisval):rest) =
 -- word numbers
 word = "coffee"
 lns = zip ['a'..'z'] [1..]
--- need to map myLookup so that it returns a list 
--- f :: [Char] -> [Int] 
--- f' :: [Int] -> Int
--- f' x = foldl (+)
+--need to map myLookup so that it returns a list 
+--hm :: [Char] -> [Maybe Int] 
+hm x = myLookup x lns
+result = map hm word
+-- f' x = sum
 -- need a function that will collapse a multi-digit number to a single-digit number
 -- f'' :: Int -> Int
 -- 15 -> 6; 11 -> 2
 
+-- use filter and map.
+--result = map myLookup 
