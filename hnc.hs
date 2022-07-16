@@ -49,20 +49,26 @@ myLookup key ((thiskey,thisval):rest) =
 -- week_
 -- word numbers
 word = "coffee"
-lns = zip ['a'..'z'] [1..]
---need to map myLookup so that it returns a list 
---hm :: [Char] -> [Maybe Int] 
-hm x = myLookup x lns
-result = map hm word
--- f' x = sum on Maybe
--- need a function that will collapse a multi-digit number to a single-digit number
--- f'' :: Int -> Int
--- 15 -> 6; 111 -> 3; 96870->9+..+0->until get a single digit number
--- compare: function reverseInt 12345 -> 54321
+wordNumber :: (Num a, Enum a) => [Char] -> Maybe a
+wordNumber word = sumMaybe [myLookup x lns| x <- word]
+  where 
+    lns = zip ['a'..'z'] [1..]
+    sumMaybe :: Num a => [Maybe a] -> Maybe a
+    sumMaybe = fmap sum . sequence
 
 -- use filter and map.
+
 --week 5 
 -- Pure vs IO
 -- filter vs fold
 -- recursion
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+fibs' = map fst $ iterate (\(a,b) -> (b,a+b)) (0,1)
+
+fib = (map fib' [0 ..] !!)
+    where
+      fib' 0 = 0
+      fib' 1 = 1
+      fib' n = fib (n - 1) + fib (n - 2)
+
+
